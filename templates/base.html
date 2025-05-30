@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cycle Pure Agarbattis - Production Planning{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-blue-900 text-white w-64 min-h-screen p-4 transition-all duration-300">
+            <div class="flex items-center mb-8">
+                <h1 class="text-xl font-bold">Production Planning</h1>
+            </div>
+            
+            <nav>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-800 transition-colors duration-200">
+                            <i class="fas fa-chart-line w-5"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/monthly-planning/" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-800 transition-colors duration-200">
+                            <i class="fas fa-calendar-alt w-5"></i>
+                            <span>Monthly Planning</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/weekly-schedule/" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-800 transition-colors duration-200">
+                            <i class="fas fa-calendar-week w-5"></i>
+                            <span>Weekly Schedule</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/machine-planning/" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-800 transition-colors duration-200">
+                            <i class="fas fa-cogs w-5"></i>
+                            <span>Machine Planning</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/reports/" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-800 transition-colors duration-200">
+                            <i class="fas fa-chart-bar w-5"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+                <div class="flex items-center justify-between">
+                    <button id="toggle-sidebar" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-600">Production Manager: Anirudh</span>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p class="mt-4 text-gray-600">Loading...</p>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
