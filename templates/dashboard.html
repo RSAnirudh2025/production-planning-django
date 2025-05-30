@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Production Planning{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-semibold text-gray-800">Production Dashboard</h1>
+            <p class="text-gray-600">Real-time production monitoring and KPIs</p>
+        </div>
+        <button id="refresh-data" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            <i class="fas fa-sync mr-2"></i>Refresh Data
+        </button>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Today's Production</p>
+                    <p id="today-production" class="text-2xl font-bold text-blue-600">Loading...</p>
+                </div>
+                <div class="p-3 bg-blue-100 rounded-full">
+                    <i class="fas fa-industry text-blue-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Overall Efficiency</p>
+                    <p id="overall-efficiency" class="text-2xl font-bold text-green-600">Loading...</p>
+                </div>
+                <div class="p-3 bg-green-100 rounded-full">
+                    <i class="fas fa-chart-line text-green-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Active Machines</p>
+                    <p id="active-machines" class="text-2xl font-bold text-orange-600">Loading...</p>
+                </div>
+                <div class="p-3 bg-orange-100 rounded-full">
+                    <i class="fas fa-cogs text-orange-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Alert Count</p>
+                    <p id="alert-count" class="text-2xl font-bold text-red-600">Loading...</p>
+                </div>
+                <div class="p-3 bg-red-100 rounded-full">
+                    <i class="fas fa-exclamation-triangle text-red-600"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts and Data -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Production Overview -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4">Production Overview</h2>
+            <canvas id="production-chart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Machine Status -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold mb-4">Machine Status</h2>
+            <div id="machine-status" class="space-y-3">
+                <!-- Machine status items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-lg font-semibold mb-4">Recent Activity</h2>
+        <div id="recent-activity" class="space-y-3">
+            <!-- Recent activity items will be loaded here -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}
